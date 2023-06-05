@@ -5,8 +5,6 @@ const ObjectId = ''
 const twilio = require("twilio");
 const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioAccountSid = process.env.TWILIO_ACCOUNT_SID;
-// console.log(twilioAccountSid);
-// console.log(twilioAuthToken);
 
 module.exports = {
     query,
@@ -56,8 +54,6 @@ async function update(msg) {
 async function sendMsg(sms, phoneNumber) {
     try {
         console.log(phoneNumber)
-        console.log(twilioAccountSid);
-        console.log(twilioAuthToken);
         const client = new twilio(twilioAccountSid, twilioAuthToken)
         return client.messages
         .create({
