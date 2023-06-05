@@ -51,7 +51,7 @@ async function update(msg) {
 async function sendMsg(sms, phoneNumber) {
     try {
         console.log(phoneNumber)
-        const client = new twilio('ACe5528ae3a6d3dd01d52e30b005c5aeae', '3b89e2f3c2a3595c068e5d584e9a5f31')
+        const client = new twilio('ACe5528ae3a6d3dd01d52e30b005c5aeae', 'ddd70749c964fd84ea9f1d9f7a2464ee')
         return client.messages
         .create({
           body: sms,

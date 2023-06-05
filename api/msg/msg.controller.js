@@ -7,11 +7,21 @@ async function getMsgs(req, res) {
     const name = req.body.name;
     const phoneNumber = req.body.phoneNumber;
     const phoneNumberOfTherapist = req.body.phoneNumberOfTherapist;
+    const regularMedications = req.body.regularMedications;
 
-    const sms = name + ' is having an anxiety attack right now, his location is ' + location + ' and his phone number is ' + phoneNumber
-    const phone = '+972' + phoneNumberOfTherapist.substring(1)
-    const msg = await msgService.sendMsg(sms, phone);
-    res.send(msg);
+    if(regularMedications === "no"){
+      const sms = name + ' is having an anxiety attack right now, his location is ' + location + ' and his phone number is ' + phoneNumber
+      const phone = '+972' + phoneNumberOfTherapist.substring(1)
+      const msg = await msgService.sendMsg(sms, phone);
+      res.send(msg);    
+    }
+    else{
+      const sms = name + ' is having an anxiety attack right now, his location is ' + location + ' and his phone number is ' + phoneNumber + ', he takes regular medications: ' + regularMedications
+      const phone = '+972' + phoneNumberOfTherapist.substring(1)
+      const msg = await msgService.sendMsg(sms, phone);
+      res.send(msg);    
+    }
+
   } catch (err) {
     logger.error("Failed to send sms", err);
     res.status(500).send({ err: "Failed to send sms" });
