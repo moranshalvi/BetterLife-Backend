@@ -5,8 +5,8 @@ const ObjectId = ''
 const twilio = require("twilio");
 const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioAccountSid = process.env.TWILIO_ACCOUNT_SID;
-console.log(twilioAccountSid);
-console.log(twilioAuthToken);
+// console.log(twilioAccountSid);
+// console.log(twilioAuthToken);
 
 module.exports = {
     query,
