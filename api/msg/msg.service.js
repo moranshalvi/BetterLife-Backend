@@ -1,7 +1,12 @@
+require('dotenv').config();
 const dbService = require('../../services/firebaseAction.service')
 const logger = require('../../services/logger.service')
 const ObjectId = ''
 const twilio = require("twilio");
+const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
+const twilioAccountSid = process.env.TWILIO_ACCOUNT_SID;
+console.log(twilioAccountSid);
+console.log(twilioAuthToken);
 
 module.exports = {
     query,
@@ -51,7 +56,9 @@ async function update(msg) {
 async function sendMsg(sms, phoneNumber) {
     try {
         console.log(phoneNumber)
-        const client = new twilio('ACe5528ae3a6d3dd01d52e30b005c5aeae', 'ddd70749c964fd84ea9f1d9f7a2464ee')
+        console.log(twilioAccountSid);
+        console.log(twilioAuthToken);
+        const client = new twilio(twilioAccountSid, twilioAuthToken)
         return client.messages
         .create({
           body: sms,
